@@ -68,7 +68,7 @@ pair_coeff  * *
 timestep    ${dt}
 #fix         gravi all gravity 9.81 vector 0.0 0.0 -1.0
 
-fix         container all mesh/surface file stl_files/mesh.stl type 2
+fix         container all mesh/surface file meshes/mesh.stl type 2
 
 fix granwalls all wall/gran model hooke/stiffness tangential history mesh n_meshes 1 meshes container
 
