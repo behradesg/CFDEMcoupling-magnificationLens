@@ -79,7 +79,7 @@ void simpleRandomPath::computeRecPath()
 #if OPENFOAM_VERSION_MAJOR < 6
     label seqLength = ranGen.integer(lowerSeqLim, upperSeqLim);
 #else
-    label seqLength = ranGen.sampleAB(lowerSeqLim, upperSeqLim);
+    label seqLength = ranGen.sampleAB(lowerSeqLim, upperSeqLim+1);
 #endif
 
     virtualTimeIndex = seqEnd(seqStart,seqLength);
@@ -129,7 +129,7 @@ void simpleRandomPath::computeRecPath()
 #if OPENFOAM_VERSION_MAJOR < 6
         seqLength = ranGen.integer(lowerSeqLim, upperSeqLim);
 #else
-        seqLength = ranGen.sampleAB(lowerSeqLim, upperSeqLim);
+        seqLength = ranGen.sampleAB(lowerSeqLim, upperSeqLim+1);
 #endif
         virtualTimeIndex = seqEnd(seqStart,seqLength);
         labelPair seqStartEnd(seqStart,virtualTimeIndex);
