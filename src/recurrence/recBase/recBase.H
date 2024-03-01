@@ -24,7 +24,6 @@ License
 #ifndef recBase_H
 #define recBase_H
 
-// choose version
 #include <vector>
 
 #include "fvCFD.H"

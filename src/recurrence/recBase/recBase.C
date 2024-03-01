@@ -37,18 +37,18 @@ recBase::recBase
     const fvMesh& mesh
 )
 :
-  regIOobject
-  (
-      IOobject
-      (
-          "recurrenceBase",
-          mesh.time().timeName(),
-          mesh,
-          IOobject::NO_READ,
-          IOobject::NO_WRITE,
-          true
-      )
-  ),
+    regIOobject
+    (
+        IOobject
+        (
+            "recurrenceBase",
+            mesh.time().timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::NO_WRITE,
+            true
+        )
+    ),
     mesh_(mesh),
     recProperties_
     (
@@ -96,38 +96,40 @@ recBase::recBase
     couplingSubStep_(recProperties_.lookupOrDefault<label>("couplingSubStep",0))
 {
 
-    recModel_        ->  readFieldSeries();
+    recModel_->readFieldSeries();
     if (!recStatAnalysis_->suppressMatrixAndPath())
     {
-        recNorm_         ->  computeRecMatrix();
-        recPath_         ->  getRecPath();
+        recNorm_->computeRecMatrix();
+        recPath_->getRecPath();
     }
 
-    recModel_        ->  init();
-  
+    recModel_->init();
+
     if (!recStatAnalysis_->suppressMatrixAndPath())
     {
-        recModel_        ->  writeRecMatrix();
-        recModel_        ->  writeRecPath();
+        recModel_->writeRecMatrix();
+        recModel_->writeRecPath();
     }
 }
+
+
 recBase::recBase
 (
-    const fvMesh& mesh,const word recDictName_
+    const fvMesh& mesh, const word recDictName_
 )
 :
      regIOobject
-  (
-      IOobject
-      (
-          "recurrenceBase",
-          mesh.time().timeName(),
-          mesh,
-          IOobject::NO_READ,
-          IOobject::NO_WRITE,
-          true
-      )
-  ),
+    (
+        IOobject
+        (
+            "recurrenceBase",
+            mesh.time().timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::NO_WRITE,
+            true
+        )
+    ),
     mesh_(mesh),
     recProperties_
     (
@@ -174,14 +176,14 @@ recBase::recBase
     ),
     couplingSubStep_(recProperties_.lookupOrDefault<label>("couplingSubStep",0))
 {
-  recModel_        ->  readFieldSeries();
-  recNorm_         ->  computeRecMatrix();
-  recPath_         ->  getRecPath();
+    recModel_->readFieldSeries();
+    recNorm_->computeRecMatrix();
+    recPath_->getRecPath();
 
-  recModel_        ->  init();
+    recModel_->init();
 
-  recModel_        ->  writeRecMatrix();
-  recModel_        ->  writeRecPath();
+    recModel_->writeRecMatrix();
+    recModel_->writeRecPath();
 }
 
 
@@ -209,12 +211,12 @@ recPath& recBase::recP()
 
 recStatAnalysis& recBase::recStatA()
 {
-   return recStatAnalysis_();
+    return recStatAnalysis_();
 }
 
 void recBase::extendPath()
 {
-    recPath_         ->  getRecPath();
+    recPath_->getRecPath();
 }
 
 void recBase::updateRecFields()
