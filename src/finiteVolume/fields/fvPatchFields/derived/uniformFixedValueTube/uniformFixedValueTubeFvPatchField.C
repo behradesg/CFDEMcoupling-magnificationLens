@@ -42,8 +42,8 @@ uniformFixedValueTubeFvPatchField<Type>::uniformFixedValueTubeFvPatchField
 :
     fixedValueFvPatchField<Type>(p, iF),
     uniformValue_(),
-	pName_("p"), //JOKER
-	phiName_("phi"), //JOKER
+    pName_("p"), //JOKER
+    phiName_("phi"), //JOKER
     velocityFieldName_("U"),
     densityFieldName_("rho"),
     tubeLength_(-1.),
@@ -66,8 +66,8 @@ uniformFixedValueTubeFvPatchField<Type>::uniformFixedValueTubeFvPatchField
 :
     fixedValueFvPatchField<Type>(p, iF),
     uniformValue_(ptf.uniformValue_().clone().ptr()),
-	pName_("p"), //JOKER
-	phiName_("phi"), //JOKER
+    pName_("p"), //JOKER
+    phiName_("phi"), //JOKER
     velocityFieldName_("U"),
     densityFieldName_("rho"),
     tubeLength_(ptf.tubeLength_),
@@ -91,8 +91,8 @@ uniformFixedValueTubeFvPatchField<Type>::uniformFixedValueTubeFvPatchField
 :
     fixedValueFvPatchField<Type>(p, iF),
     uniformValue_(Function1<Type>::New("uniformValue", dict)),
-	pName_("p_rgh"), //JOKER
-	phiName_("phi"), //JOKER
+    pName_("p_rgh"), //JOKER
+    phiName_("phi"), //JOKER
     velocityFieldName_("U"),
     densityFieldName_("rho"),
     tubeLength_(readScalar(dict.lookup("tubeLength"))),
@@ -113,8 +113,8 @@ uniformFixedValueTubeFvPatchField<Type>::uniformFixedValueTubeFvPatchField
 :
     fixedValueFvPatchField<Type>(ptf),
     uniformValue_(ptf.uniformValue_().clone().ptr()),
-	pName_("p_rgh"), //JOKER
-	phiName_("phi"), //JOKER
+    pName_("p_rgh"), //JOKER
+    phiName_("phi"), //JOKER
     velocityFieldName_("U"),
     densityFieldName_("rho"),
     tubeLength_(ptf.tubeLength_),
@@ -136,8 +136,8 @@ uniformFixedValueTubeFvPatchField<Type>::uniformFixedValueTubeFvPatchField
 :
     fixedValueFvPatchField<Type>(ptf, iF),
     uniformValue_(ptf.uniformValue_().clone().ptr()),
-	pName_("p_rgh"), //JOKER
-	phiName_("phi"), //JOKER
+    pName_("p_rgh"), //JOKER
+    phiName_("phi"), //JOKER
     velocityFieldName_("U"),
     densityFieldName_("rho"),
     tubeLength_(ptf.tubeLength_),
@@ -174,24 +174,24 @@ void uniformFixedValueTubeFvPatchField<Type>::updateCoeffs()
 
 //    const fvPatchField<vector>& velocity = this->patch().template lookupPatchField<volVectorField, vector>(velocityFieldName_);
     const fvPatchField<scalar>& density = this->patch().template lookupPatchField<volScalarField, scalar>(densityFieldName_);
-	const fvPatchField<scalar>& pressure = this->patch().template lookupPatchField<volScalarField, scalar>(pName_);
+    const fvPatchField<scalar>& pressure = this->patch().template lookupPatchField<volScalarField, scalar>(pName_);
     const scalar t = this->db().time().timeOutputValue();
 
-	const fvsPatchField<scalar>& phip = this->patch().template lookupPatchField<surfaceScalarField, scalar>(phiName_);
+    const fvsPatchField<scalar>& phip = this->patch().template lookupPatchField<surfaceScalarField, scalar>(phiName_);
 
-	const scalar uRelFact = 1.e-3;
+    const scalar uRelFact = 1.e-3;
 
-	//scalar zeta = 0.1; //must be read from dict
+    //scalar zeta = 0.1; //must be read from dict
 
-	//calc cell velocity from flux phip
-	//scalar vel = phip/this->patch().magSf();
+    //calc cell velocity from flux phip
+    //scalar vel = phip/this->patch().magSf();
     // some relaxation might be useful?
-	
+
     // calc pressure drop
 //    fvPatchField<Type>::operator==(0.5*zeta*density*mag(velocity)*mag(velocity)*uniformValue_->value(t));
-	//dP = zeta * l/d * rho u^2 / 2
-	fvPatchField<Type>::operator==((pressure+(0.5*zeta_*tubeLength_/tubeDiameter_*density*phip/this->patch().magSf()*phip/this->patch().magSf()+p0_-pressure)*uRelFact)*uniformValue_->value(t));
-	//fvPatchField<Type>::operator==((100.*uniformValue_->value(t)));
+    //dP = zeta * l/d * rho u^2 / 2
+    fvPatchField<Type>::operator==((pressure+(0.5*zeta_*tubeLength_/tubeDiameter_*density*phip/this->patch().magSf()*phip/this->patch().magSf()+p0_-pressure)*uRelFact)*uniformValue_->value(t));
+    //fvPatchField<Type>::operator==((100.*uniformValue_->value(t)));
     fixedValueFvPatchField<Type>::updateCoeffs();
 }
 
