@@ -89,7 +89,7 @@ fix     plug all wall/gran model hooke/stiffness tangential history rolling_fric
 
 # particle insertion
 fix     pts1 all particletemplate/sphere 1 atom_type 1 density constant ${partDens} radius constant ${partRad}
-fix     pdd1 all particledistribution/discrete 1.0 1 pts1 1.0
+fix     pdd1 all particledistribution/discrete 1 1 pts1 1.0
 
 region  insReg block -0.075 0.075 -0.012 0.012 0.0 0.5 units box
 
@@ -107,9 +107,11 @@ thermo          1000
 thermo_modify   lost ignore norm no
 compute_modify  thermo_temp dynamic yes
 
+run     1
+
 dump    dmp all custom/vtk 40000 post/dump*.filling.vtk id type x y z vx vy vz fx fy fz omegax omegay omegaz radius
 
-run     200000
+run     80000 upto
 
 write_restart   liggghts.restart_predel
 
@@ -139,3 +141,4 @@ label endloop
 ################################################################################
 
 write_restart   liggghts.restart
+
