@@ -26,7 +26,10 @@ FoamFile
 //===========================================================================//
 // sub-models & settings
 
-
+// rcfdemSolverBase settings
+voidfractionFieldName   "voidfractionMean";
+UFieldName              "UsMean";
+UsFieldName             "UsMean";
 recModel standardRecModel;
 
 recNorm sqrDiffNorm;
@@ -71,7 +74,7 @@ standardRecModelProps
 sqrDiffNormProps
 {
   fieldType "volScalarField";
-  fieldName "voidfraction";
+  fieldName "voidfractionMean";
 }
 
 simpleRandomPathProps
