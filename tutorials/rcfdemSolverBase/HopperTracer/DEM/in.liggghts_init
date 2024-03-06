@@ -61,7 +61,7 @@ region          reg block -0.075 0.075 -0.012 0.012 0.0 0.6 units box
 create_box      3 reg
 
 neighbor        ${skin} bin
-neigh_modify    delay 0 exclude type 1 1
+neigh_modify    delay 0
 
 # material properties required for granular pair styles
 fix     m1 all property/global kn peratomtypepair 3 ${knPP} ${knPW} ${knPW} ${knPW} 0 0 ${knPW} 0 0
