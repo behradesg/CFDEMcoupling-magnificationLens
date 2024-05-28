@@ -56,8 +56,10 @@ dSauter::dSauter
     multiTypes_(false),
     d2RegName_(typeName + "d2"),
     d3RegName_(typeName + "d3"),
-    maxTypeCG_(1),
+    scaleDia_(1.),
     typeCG_(propsDict_.lookupOrDefault<scalarList>("coarseGrainingFactors",scalarList(1,1.0))),
+    maxTypeCG_(typeCG_.size()),
+    lastCouplingStep_(-1),
     d2Field_
     (   IOobject
         (
@@ -96,10 +98,13 @@ dSauter::dSauter
         "zeroGradient"
     )
 {
-    if (typeCG_.size()>1)
+    if (typeCG_.size()==1)
+    {
+        scaleDia_= typeCG_[0];
+    }
+    else if (typeCG_.size()>1)
     {
         multiTypes_ = true;
-        maxTypeCG_ = typeCG_.size();
     }
 
     particleCloud_.registerParticleProperty<double**>(d2RegName_,1);
@@ -129,13 +134,19 @@ void dSauter::setForce() const
     {
         Info << "dSauter using CG factor(s) = " << typeCG_ << endl;
     }
+    else if (particleCloud_.cg() > 1)
+    {
+        scaleDia_ = particleCloud_.cg();
+        Info << "dSauter using scale from liggghts cg = " << scaleDia_ << endl;
+    }
+
 
     double**& d2_ = particleCloud_.getParticlePropertyRef<double**>(d2RegName_);
     double**& d3_ = particleCloud_.getParticlePropertyRef<double**>(d3RegName_);
 
     label cellI = 0;
     label partType = 1;
-    scalar cg = typeCG_[0];
+    scalar cg = scaleDia_;
     scalar ds = 0.0;
     scalar effVolFac = 1.0;
 
@@ -164,8 +175,12 @@ void dSauter::setForce() const
         }
     }
 
-    d2Field_.primitiveFieldRef() = 0.0;
-    d3Field_.primitiveFieldRef() = 0.0;
+    if(particleCloud_.dataExchangeM().couplingStep() != lastCouplingStep_) // hack for universe cloud
+    {
+        d2Field_.primitiveFieldRef() = 0.0;
+        d3Field_.primitiveFieldRef() = 0.0;
+        lastCouplingStep_ = particleCloud_.dataExchangeM().couplingStep();
+    }
 
     particleCloud_.averagingM().setScalarSum
     (

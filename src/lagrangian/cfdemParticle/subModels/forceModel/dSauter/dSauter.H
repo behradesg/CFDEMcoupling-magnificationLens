@@ -49,9 +49,13 @@ private:
 
     const word d3RegName_;
 
-    label maxTypeCG_;
+    mutable scalar scaleDia_;
 
     scalarList typeCG_;
+
+    label maxTypeCG_;
+
+    mutable int lastCouplingStep_;
 
     mutable volScalarField d2Field_;
 
