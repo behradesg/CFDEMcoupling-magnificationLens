@@ -21,7 +21,7 @@ for t in *; do
 done
 
 for t in *; do
-    tnew=$(awk "BEGIN {print $t-$t0}")
+    tnew=$(LC_NUMERIC=C awk "BEGIN {print $t-$t0}")
     mv $t $tnew
 done
 
