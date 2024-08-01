@@ -71,6 +71,10 @@ int main(int argc, char *argv[])
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+    #if OPENFOAM_VERSION_MAJOR == 6
+        Warning << "cfdemSolverMultiphaseScalar with OpenFOAM 6 ignores the ddtCorr term in pEqn" << endl;
+    #endif
+
     Info<< "\nStarting time loop\n" << endl;
 
     while (runTime.loop())
