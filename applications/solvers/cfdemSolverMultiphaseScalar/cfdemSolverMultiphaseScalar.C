@@ -51,10 +51,6 @@ Description
 
 int main(int argc, char *argv[])
 {
-#if OPENFOAM_VERSION_MAJOR >= 6
-    FatalError << "cfdemSolverMultiphase requires OpenFOAM 4.x or 5.x to work properly" << exit(FatalError);
-#endif
-
     #include "postProcess.H"
     #include "setRootCase.H"
     #include "createTime.H"
@@ -74,6 +70,10 @@ int main(int argc, char *argv[])
     #include "additionalChecks.H"
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+    #if OPENFOAM_VERSION_MAJOR == 6
+        Warning << "cfdemSolverMultiphaseScalar with OpenFOAM 6 ignores the ddtCorr term in pEqn" << endl;
+    #endif
 
     Info<< "\nStarting time loop\n" << endl;
 

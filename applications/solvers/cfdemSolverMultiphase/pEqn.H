@@ -10,7 +10,9 @@
     (
         "phiHbyA",
         fvc::flux(HbyA*voidfraction)
+#if OPENFOAM_VERSION_MAJOR != 6
       + fvc::interpolate(voidfraction*rho*rAU)*fvc::ddtCorr(U, phi)
+#endif
     );
 
     adjustPhi(phiHbyA, U, p_rgh);
