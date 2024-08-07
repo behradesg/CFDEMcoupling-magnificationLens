@@ -101,14 +101,14 @@ string runLiggghts::createCommand( word command, int interval, word appendix, wo
 
 bool runLiggghts::runCommand(int couplingStep)
 {
-    //change command to  "run xxx pre no"
+    //change command to  "run xxx pre no post no"
     if (preNo_ && (couplingStep > firstCouplingStep_))
     {
         strCommand_ = createCommand(command_, particleCloud_.dataExchangeM().couplingInterval(),"pre","no","post","no");
     }
     else
     {
-        strCommand_ = createCommand(command_, particleCloud_.dataExchangeM().couplingInterval());
+        strCommand_ = createCommand(command_, particleCloud_.dataExchangeM().couplingInterval()); // equal to "run xxx pre yes post yes"
     }
 
     return runThisCommand(couplingStep);
