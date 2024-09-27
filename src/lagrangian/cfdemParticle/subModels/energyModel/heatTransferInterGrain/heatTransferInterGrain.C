@@ -225,7 +225,7 @@ void heatTransferInterGrain::calcEnergyContribution()
     {
         double**& partThermCap_ = particleCloud_.getParticlePropertyRef<double**>(partThermCapRegName_);
         label cellI = -1;
-        label partType = -1;
+        label partType = 1;
         for(int index = 0;index < particleCloud_.numberOfParticles(); ++index)
         {
             cellI = particleCloud_.cellIDs()[index][0];
