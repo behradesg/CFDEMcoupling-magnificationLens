@@ -1,0 +1,62 @@
+.. index:: dataExchangeModel oneWayVTK
+
+dataExchangeModel oneWayVTK command
+===================================
+
+Syntax
+""""""
+
+Defined in :ref:`couplingProperties <couplingProperties>`
+dictionary.
+
+
+.. parsed-literal::
+
+   dataExchangeModel oneWayVTK;
+   oneWayVTKProps
+   {
+       DEMts                   timeStep;
+       relativePath            "path";
+       couplingFilename        "filename";
+       maxNumberOfParticles    number;
+   }
+
+* *timeStep* = time step size of stored DEM data
+* *path* = path to the VTK data files relative do simulation directory
+* *filename* = filename of the VTK file series
+* *number* = maximum number of particles in DEM simulation
+
+
+Examples
+""""""""
+
+
+.. parsed-literal::
+
+   dataExchangeModel oneWayVTK;
+   oneWayVTKProps
+   {
+       DEMts                   0.0001;
+       relativePath            "../DEM/post";
+       couplingFilename        "vtk_out%4.4d.vtk";
+       maxNumberOfParticles    30000;
+   }
+
+Description
+"""""""""""
+
+The data exchange model performs the data exchange between the DEM code and the
+CFD code. The *oneWayVTK* model is a model that can exchange particle properties
+from DEM to CFD based on previously stored VTK data.
+
+Restrictions
+""""""""""""
+
+
+none
+
+Related commands
+""""""""""""""""
+
+:doc:`dataExchangeModel <dataExchangeModel>`
+
