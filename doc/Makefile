@@ -7,10 +7,6 @@ SPHINXBUILD   = sphinx-build
 #SPHINXBUILD   = /usr/share/sphinx/scripts/python3/sphinx-build
 PAPER         =
 BUILDDIR      = _build
-TXT2RST       = txt2rst
-
-SOURCES=$(wildcard *.txt)
-OBJECTS=$(SOURCES:%.txt=%.rst)
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -54,7 +50,7 @@ help:
 clean:
 	rm -rf $(BUILDDIR)/*
 
-html: $(OBJECTS)
+html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
@@ -183,7 +179,3 @@ pseudoxml:
 	@echo
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
 
-%.rst : %.txt
-	$(TXT2RST) $< > $@
-
-rst: $(OBJECTS) ;
