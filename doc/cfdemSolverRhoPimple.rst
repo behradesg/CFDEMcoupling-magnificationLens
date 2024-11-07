@@ -12,8 +12,6 @@ framework. Based on the OpenFOAM\ |reg|\ (*) solver rhoPimpleFoam, this is a
 transient solver for compressible flow using the flexible PIMPLE (PISO-SIMPLE)
 algorithm, coupled with the DEM code LIGGGHTS for solid particles.
 
-.. |reg|    unicode:: U+000AE .. REGISTERED SIGN
-
 
 ----------
 
@@ -29,7 +27,3 @@ algorithm, coupled with the DEM code LIGGGHTS for solid particles.
 
 .. |reg|    unicode:: U+000AE .. REGISTERED SIGN
 
-
-.. _lws: http://lammps.sandia.gov
-.. _ld: Manual.html
-.. _lc: Section_commands.html#comm

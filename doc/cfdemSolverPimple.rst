@@ -7,12 +7,11 @@ Description
 """""""""""
 
 
-"cfdemSolverPimple" is a coupled CFD-DEM solver using CFDEMcoupling, an open-source parallel coupled CFD-DEM framework. Based on DPMFoam\ |reg|\ (*), a finite
+"cfdemSolverPimple" is a coupled CFD-DEM solver using CFDEMcoupling, an open-source
+parallel coupled CFD-DEM framework. Based on DPMFoam\ |reg|\ (*), a finite
 volume based solver for turbulent Navier-Stokes equations applying the PIMPLE
 algorithm, "cfdemSolverPimple" has additional functionality for a coupling to the
 DEM code "LIGGGHTS".
-
-.. |reg|    unicode:: U+000AE .. REGISTERED SIGN
 
 The volume averaged Navier-Stokes Equations are solved accounting for momentum
 exchange and volume displacement of discrete particles whose trajectories are
@@ -33,7 +32,3 @@ calculated in the DEM code LIGGGHTS.
 
 .. |reg|    unicode:: U+000AE .. REGISTERED SIGN
 
-
-.. _lws: http://lammps.sandia.gov
-.. _ld: Manual.html
-.. _lc: Section_commands.html#comm

@@ -42,8 +42,6 @@ transportProperties, RASproperties, etc.) and $caseDir/CFD/system (e.g.
 fvSchemes, controlDict). You can find more information on that in
 OpenFOAM\ |reg|\ (*) documentations.
 
-.. |reg|    unicode:: U+000AE .. REGISTERED SIGN
-
 Settings of the coupling routines are defined in
 $caseDir/CFD/constant/:ref:`couplingProperties <couplingProperties>`
 (e.g. force models, data exchange model, etc.) and

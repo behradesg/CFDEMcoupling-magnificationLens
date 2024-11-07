@@ -14,8 +14,6 @@ algorithm, coupled with the DEM code LIGGGHTS for solid particles.
 Compared to cfdemSolverRhoPimple this solver adds functionality for chemical
 reactions.
 
-.. |reg|    unicode:: U+000AE .. REGISTERED SIGN
-
 
 ----------
 
@@ -31,7 +29,3 @@ reactions.
 
 .. |reg|    unicode:: U+000AE .. REGISTERED SIGN
 
-
-.. _lws: http://lammps.sandia.gov
-.. _ld: Manual.html
-.. _lc: Section_commands.html#comm

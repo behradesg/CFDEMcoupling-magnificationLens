@@ -17,8 +17,6 @@ Using the toolbox of OpenFOAM\ |reg|\ (*) the governing equations of the fluid a
 computed and the corrections of velocity and pressure field with respect to the
 body-movement information, gained from LIGGGHTS, are incorporated.
 
-.. |reg|    unicode:: U+000AE .. REGISTERED SIGN
-
 The code of this solver was contributed by A. Hager, JKU. For more details, see
 :ref:`Goniva et al. (2011) <Goniva2011>` and :ref:`Hager et al. (2011) <Hager2011>`
 

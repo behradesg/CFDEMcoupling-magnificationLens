@@ -13,8 +13,6 @@ volume based solver for turbulent Navier-Stokes equations applying PISO
 algorithm, "cfdemSolverPisoScalar" has additional functionality for a coupling
 to the DEM code "LIGGGHTS" as well as a scalar transport equation.
 
-.. |reg|    unicode:: U+000AE .. REGISTERED SIGN
-
 The volume averaged Navier-Stokes Equations are solved accounting for momentum
 exchange and volume displacement of discrete particles, whose trajectories are
 calculated in the DEM code LIGGGHTS.
@@ -60,7 +58,3 @@ Proc. of OpenFOAM Workshop, Göteborg, June 22.-24.
 
 .. |reg|    unicode:: U+000AE .. REGISTERED SIGN
 
-
-.. _lws: http://lammps.sandia.gov
-.. _ld: Manual.html
-.. _lc: Section_commands.html#comm

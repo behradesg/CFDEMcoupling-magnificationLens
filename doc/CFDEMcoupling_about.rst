@@ -11,8 +11,6 @@ The CFDEMcoupling toolbox allows to expand standard CFD solvers of
 OpenFOAM\ |reg|\ (*) to include a coupling to the DEM code
 `LIGGGHTS <http://www.cfdem.com>`_.
 
-.. |reg|    unicode:: U+000AE .. REGISTERED SIGN
-
 In this toolbox the particle representation within the CFD
 solver is organized by "cloud" classes. Key functionalities are organized in
 sub-models (e.g. force models, data exchange models, etc.) which can easily be

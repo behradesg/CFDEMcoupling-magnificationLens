@@ -70,7 +70,7 @@ Examples
            slash
            DEM
            slash
-           liggghts.restart_
+           liggghts.restart\_
            timeStamp
        );
        runFirst             off;
