@@ -1,0 +1,43 @@
+.. index:: averagingModel dense
+
+averagingModel dense command
+============================
+
+Syntax
+""""""
+
+Defined in :ref:`couplingProperties <couplingProperties>`
+dictionary.
+
+
+.. parsed-literal::
+
+   averagingModel dense;
+
+Examples
+""""""""
+
+
+.. parsed-literal::
+
+   averagingModel dense;
+
+Description
+"""""""""""
+
+The averaging model performs the Lagrangian->Eulerian mapping of data (e.g.
+particle velocities). In the "cfdemParticle cloud" this averaging model is used
+to calculate the average particle velocity inside a CFD cell. The *dense* model
+is supposed to be applied to cases where the granular regime is rather dense.
+
+Restrictions
+""""""""""""
+
+
+No known restrictions.
+
+Related commands
+""""""""""""""""
+
+:doc:`averagingModel <averagingModel>`, :doc:`dilute <averagingModel_dilute>`
+

@@ -1,0 +1,74 @@
+.. index:: forceModel fieldStore
+
+forceModel fieldStore command
+=============================
+
+Syntax
+""""""
+
+Defined in :ref:`couplingProperties <couplingProperties>`
+dictionary.
+
+
+.. parsed-literal::
+
+   forceModels
+   (
+       fieldStore
+   );
+   fieldStoreProps
+   {
+       scalarFieldNames
+       (
+           "scalarField"
+       );
+       vectorFieldNames
+       (
+           "vectorField"
+       );
+   }
+
+* *scalarField* = names of the finite volume scalar fields to be stored
+* *vectorField* = names of the finite volume vector fields to be stored
+
+
+Examples
+""""""""
+
+
+.. parsed-literal::
+
+   forceModels
+   (
+       fieldStore
+   );
+   fieldStoreProps
+   {
+       scalarFieldNames
+       (
+           "voidfraction"
+       );
+       vectorFieldNames
+       (
+           "U"
+       );
+   }
+
+Description
+"""""""""""
+
+This "force model" does not influence the particles or the flow - it is a tool
+to store a scalar/vector field! This is especially useful if you use a boundary
+condition which cannot interpreted correctly in your post-processor (e.g. paraview).
+
+Restrictions
+""""""""""""
+
+
+none
+
+Related commands
+""""""""""""""""
+
+:doc:`forceModel <forceModel>`
+

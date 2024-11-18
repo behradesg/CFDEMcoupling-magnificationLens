@@ -1,0 +1,62 @@
+.. index:: liggghtsCommandModel runLiggghts
+
+liggghtsCommandModel runLiggghts command
+========================================
+
+Syntax
+""""""
+
+Defined in :ref:`liggghtsCommmands <liggghtsCommands>`
+dictionary.
+
+
+.. parsed-literal::
+
+   liggghtsCommandModels
+   (
+      runLiggghts
+   );
+   //- optional
+   runLiggghtsProps
+   {
+       preNo true;
+       verbose; (optional)
+   }
+
+Examples
+""""""""
+
+
+.. parsed-literal::
+
+   liggghtsCommandModels
+   (
+      runLiggghts
+   );
+
+Description
+"""""""""""
+
+The LIGGGHTS command models can be used to execute a LIGGGHTS command during a
+CFD run. The *runLiggghts* command executes the command "run $nrDEMsteps", where
+$nrDEMsteps is automatically set according to the coupling intervals, every
+coupling step.
+
+Optionally a dictionary called runLiggghtsProps can be specified where the
+"preNo" switch can be set, which uses the command "run $nrDEMsteps pre no" for
+every time step except the first.
+
+Restrictions
+""""""""""""
+
+
+.. warning::
+
+   the "pre no" option can cause troubles (dump data of particles
+   changing the domain might be erroneous)!
+
+Related commands
+""""""""""""""""
+
+:doc:`liggghtsCommandModel <liggghtsCommandModel>`
+

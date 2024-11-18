@@ -1,6 +1,5 @@
 # ignore generated files and folders
 *.html
-*.rst
 *.inv
 *~
 searchindex.js
