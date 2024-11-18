@@ -1,0 +1,72 @@
+"CFDEMproject Website"_lws - "Main Page"_main :c
+
+:link(lws,http://www.cfdem.com)
+:link(main,CFDEMcoupling_Manual.html)
+
+:line
+
+forceModel TangDrag  command :h3
+
+[Syntax:]
+
+Defined in "couplingProperties"_CFDEMcoupling_dicts.html#couplingProperties
+dictionary.
+
+forceModels
+(
+    TangDrag
+);
+TangDragProps
+\{
+    velFieldName          "U";
+    voidfractionFieldName "voidfraction"
+    granVelFieldName      "Us";
+\
+    treatForceExplicit;
+    implForceDEM;
+    verbose;
+    interpolation;
+\} :pre
+
+{U} = name of the finite volume fluid velocity field :ulb,l
+{voidfraction} = name of the finite volume void fraction field :l
+{Us} = name of the finite volume cell averaged particle velocity field :l
+{interpolation} = flag to use interpolated void fraction and fluid velocity values (normally off) :l
+{treatForceExplicit} = switch to force explicit treatment of force (normally off) :l
+{implForceDEM} = flag to use implicit formulation of drag on DEM side (normally off, if on, this switch will force {treatForceExplicit} to be off) :l
+{verbose} = switch to force display of data on screen (default: off; typically used for debug purposes) :l
+:ule
+
+[Examples:]
+
+forceModels
+(
+    TangDrag
+);
+TangDragProps
+\{
+    velFieldName          "U";
+    voidfractionFieldName "voidfraction";
+    granVelFieldName      "Us";
+    interpolation true;
+\} :pre
+
+[Description:]
+
+The force model performs the calculation of forces (e.g. fluid-particle
+interaction forces) acting on each DEM particle. The {TangDrag} model is a
+model that calculates the particle based drag force following the correlation of
+"Tang et al. (2015)"_#Tang2015.
+
+[Restrictions:]
+
+This model is strictly valid only for monodisperse gas-particle flows.
+
+:line
+
+:link(Tang2015)
+[(Tang, 2015)] 
+(Yali) Tang, Y., et al. "A new drag correlation from fully resolved simulations of flow past monodisperse static arrays of spheres." AIChE journal 61.2 (2015): 688-698.
+
+
+
