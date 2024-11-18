@@ -100,6 +100,7 @@ $(forceModels)/particleDeformation/particleDeformation.C
 $(forceModels)/turbulentDispersion/turbulentDispersion.C
 $(forceModels)/turbulentVelocityFluctuations/turbulentVelocityFluctuations.C
 $(forceModels)/staticPressure/staticPressure.C
+$(forceModels)/TangDrag/TangDrag.C
 
 $(forceSubModels)/forceSubModel/newForceSubModel.C
 $(forceSubModels)/forceSubModel/forceSubModel.C
