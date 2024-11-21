@@ -121,7 +121,7 @@ void TangDrag::setForce() const
         scaleDia_=particleCloud_.cg();
         Info << "TangDrag using scale from liggghts cg = " << scaleDia_ << endl;
     }
-    scalar scaleDia3 = scaleDia_*scaleDia_*scaleDia_; 
+    scalar scaleDia3 = scaleDia_*scaleDia_*scaleDia_;
 
     const volScalarField& nufField = forceSubM(0).nuField();
     const volScalarField& rhoField = forceSubM(0).rhoField();
@@ -140,7 +140,7 @@ void TangDrag::setForce() const
     scalar rho(0);
     scalar magUr(0);
     scalar Rep(0);
-    
+
 
     interpolationCellPoint<scalar> voidfractionInterpolator_(voidfraction_);
     interpolationCellPoint<vector> UInterpolator_(U_);
@@ -182,12 +182,12 @@ void TangDrag::setForce() const
                 rho = rhoField[cellI];
                 magUr = mag(Ur);
                 Rep = 0;
-              
+
 
                 if (magUr > 0)
                 {
 
-                    // calc particle Re Nr and 
+                    // calc particle Re Nr and
                     Rep = ds/scaleDia_*voidfraction*magUr/(nuf+SMALL);
 
                     // calc particle's drag coefficient (i.e., Force per unit slip velocity and Stokes drag)
@@ -243,8 +243,8 @@ double TangDrag::F(double voidfraction, double Rep) const
     double F1 = Foam::pow(voidfraction, 2.0)*(1.0 + 1.5*Foam::sqrt(localPhiP));
     double F2 = Rep*
     (
-        0.11*localPhiP*(1.0 + localPhiP) 
-      - 0.00456/voidfraction4 
+        0.11*localPhiP*(1.0 + localPhiP)
+      - 0.00456/voidfraction4
       + (0.169*voidfraction + 0.0644/voidfraction4)*Foam::pow(Rep,-0.343)
     );
 

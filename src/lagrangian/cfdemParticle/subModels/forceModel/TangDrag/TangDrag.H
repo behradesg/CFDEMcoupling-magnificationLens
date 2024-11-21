@@ -29,15 +29,15 @@ License
     Johannes Kepler University, Linz, Austria
 
     Description
-    Drag model of Tang et al. for flow past fixed assemblies of monodisperse 
+    Drag model of Tang et al. for flow past fixed assemblies of monodisperse
     spheres with direct numerical simulations with the Immersed boundary method.
     Range of applicability: 0 < alphaParticles < 0.6, Re <= 1000
 
     Reference:
-    Tang, Y., Peters, E.A.J.F., Kuipers, J.A.M., Kriebitzsch, S.H.L. and 
-    van der Hoef, M.A., 2015. A new drag correlation from fully resolved 
-    simulations of flow past monodisperse static arrays of spheres. 
-    AIChE journal, 61(2), pp.688-698. 
+    Tang, Y., Peters, E.A.J.F., Kuipers, J.A.M., Kriebitzsch, S.H.L. and
+    van der Hoef, M.A., 2015. A new drag correlation from fully resolved
+    simulations of flow past monodisperse static arrays of spheres.
+    AIChE journal, 61(2), pp.688-698.
 
 
 Class
@@ -82,7 +82,7 @@ private:
 
     word UsFieldName_;
 
-    const volVectorField& UsField_; 
+    const volVectorField& UsField_;
 
     mutable scalar scaleDia_;
 
