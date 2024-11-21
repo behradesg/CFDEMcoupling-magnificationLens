@@ -110,7 +110,6 @@ $(forceModels)/turbulentDispersion/turbulentDispersion.C
 $(forceModels)/terminalVelocity/terminalVelocity.C
 $(forceModels)/turbulentVelocityFluctuations/turbulentVelocityFluctuations.C
 $(forceModels)/staticPressure/staticPressure.C
-$(forceModels)/staticPressure/staticPressure.C
 $(forceModels)/TangDrag/TangDrag.C
 
 $(forceModelsMS)/forceModelMS/forceModelMS.C
