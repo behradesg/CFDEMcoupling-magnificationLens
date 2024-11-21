@@ -238,9 +238,10 @@ void TangDrag::setForce() const
 double TangDrag::F(double voidfraction, double Rep) const
 {
     double localPhiP = Foam::max(SMALL,1.0-voidfraction);
-    double voidfraction4 = Foam::sqr(Foam::sqr(voidfraction));
-    double F0 = 10.0*localPhiP/Foam::pow(voidfraction, 2.0);
-    double F1 = Foam::pow(voidfraction, 2.0)*(1.0 + 1.5*Foam::sqrt(localPhiP));
+    double voidfraction2 = Foam::sqr(voidfraction);
+    double voidfraction4 = Foam::sqr(voidfraction2);
+    double F0 = 10.0*localPhiP/voidfraction2;
+    double F1 = voidfraction2*(1.0 + 1.5*Foam::sqrt(localPhiP));
     double F2 = Rep*
     (
         0.11*localPhiP*(1.0 + localPhiP)
