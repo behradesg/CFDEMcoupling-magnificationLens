@@ -166,7 +166,7 @@ void TangDrag::setForce() const
                     //Ensure interpolated void fraction to be meaningful
                     // Info << " --> voidfraction: " << voidfraction << endl;
 
-                    if (voidfraction > 1.00) voidfraction = 1.0;
+                    if (voidfraction > 1.0) voidfraction = 1.0;
                     if (voidfraction < minVoidfraction_) voidfraction = minVoidfraction_;
                 }
                 else
@@ -243,11 +243,11 @@ double TangDrag::F(double voidfraction, double Rep) const
     double F0 = 10.0*localPhiP/voidfraction2;
     double F1 = voidfraction2*(1.0 + 1.5*Foam::sqrt(localPhiP));
     double F2 = Rep*
-    (
-        0.11*localPhiP*(1.0 + localPhiP)
-      - 0.00456/voidfraction4
-      + (0.169*voidfraction + 0.0644/voidfraction4)*Foam::pow(Rep,-0.343)
-    );
+                (
+                    0.11*localPhiP*(1.0 + localPhiP)
+                  - 0.00456/voidfraction4
+                  + (0.169*voidfraction + 0.0644/voidfraction4)*Foam::pow(Rep,-0.343)
+                );
 
     return   F0+F1+F2;
 }
