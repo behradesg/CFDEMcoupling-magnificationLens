@@ -70,6 +70,7 @@ class momCoupleModel;
 class meshMotionModel;
 class liggghtsCommandModel;
 class otherForceModel;
+class transferDataModel;
 
 /*---------------------------------------------------------------------------*\
                            Class cfdemCloud Declaration
@@ -177,6 +178,8 @@ protected:
     const wordList otherForceModels_;
 
     const word turbulenceModelType_;
+    
+    const wordList transferDataModels_;
 
     scalar cg_;
 
@@ -240,6 +243,8 @@ protected:
     PtrList<liggghtsCommandModel> liggghtsCommand_;
 
     PtrList<otherForceModel> otherForceModel_;
+    
+    PtrList<transferDataModel> transferDataModel_;
 
 // Protected member functions
     virtual void getDEMdata();
@@ -255,6 +260,8 @@ protected:
     virtual void setScalarAverages();
 
     virtual void setVectorAverages();
+    
+    virtual void transferDatas();
 
 public:
 
@@ -291,6 +298,10 @@ public:
        vector velocity(int) const;
 
        vector expForce(int) const;
+       
+       virtual const transferDataModel& transferDataM(int);
+       
+       virtual label nrTransferDataModels() const;
 
        virtual const forceModel& forceM(int);
 

@@ -46,6 +46,7 @@ Description
 #include "liggghtsCommandModel.H"
 #include "otherForceModel.H"
 #include "IOmanip.H"
+#include "transferDataModel.H"
 
 namespace Foam
 {
@@ -125,6 +126,7 @@ cfdemCloud::cfdemCloud
     liggghtsCommandModelList_(liggghtsCommandDict_.lookup("liggghtsCommandModels")),
     otherForceModels_(couplingProperties_.lookupOrDefault<wordList>("otherForceModels",wordList(0))),
     turbulenceModelType_(couplingProperties_.lookup("turbulenceModelType")),
+    transferDataModels_(couplingProperties_.lookupOrDefault<wordList>("transferDataModels",wordList(0))),
     cg_(1.),
     cgOK_(true),
     impDEMdrag_(false),
@@ -244,7 +246,8 @@ cfdemCloud::cfdemCloud
         )
     ),
     liggghtsCommand_(liggghtsCommandModelList_.size()),
-    otherForceModel_(otherForceModels_.size())
+    otherForceModel_(otherForceModels_.size()),
+    transferDataModel_(nrTransferDataModels())
 {
     #include "versionInfo.H"
     global buildInfo(couplingProperties_,*this);
@@ -337,6 +340,20 @@ cfdemCloud::cfdemCloud
         );
     }
 
+    forAll(transferDataModels_, modeli)
+    {
+        transferDataModel_.set
+        (
+            modeli,
+            transferDataModel::New
+            (
+                couplingProperties_,
+                *this,
+                transferDataModels_[modeli]
+            )
+        );
+    }
+    
     setCG(dataExchangeM().getCG());
     Switch cgWarnOnly(couplingProperties_.lookupOrDefault<Switch>("cgWarnOnly", true));
 
@@ -583,6 +600,13 @@ void cfdemCloud::setVectorAverages()
     if(verbose_) Info << "setVectorAverage done." << endl;
 }
 
+void cfdemCloud::transferDatas()
+{
+    for (int i=0;i<cfdemCloud::nrTransferDataModels();i++)
+    {
+        cfdemCloud::transferDataM(i).transferData();
+    }
+}
 // * * * * * * * * * * * * * * * public Member Functions  * * * * * * * * * * * * * //
 
 void cfdemCloud::checkCG(bool ok)
@@ -647,6 +671,16 @@ scalar cfdemCloud::voidfraction(int index) const
 label cfdemCloud::liggghtsCommandModelIndex(const word& name) const
 {
     return findIndex(liggghtsCommandModelList_, name);
+}
+
+const transferDataModel& cfdemCloud::transferDataM(int i)
+{
+    return transferDataModel_[i];
+}
+
+label cfdemCloud::nrTransferDataModels() const
+{
+    return transferDataModels_.size();
 }
 
 // * * * * * * * * * * * * * * * WRITE  * * * * * * * * * * * * * //
@@ -714,7 +748,7 @@ bool cfdemCloud::evolve
             setScalarAverages();
             setVectorAverages();
 
-
+            /* //wrong momentum smoothing
             //Smoothen "next" fields
             smoothingM().dSmoothing();
             smoothingM().smoothen(voidFractionM().voidFractionNext());
@@ -724,6 +758,17 @@ bool cfdemCloud::evolve
             //force coupling
             if(!treatVoidCellsAsExplicitForce())
                 smoothingM().smoothenReferenceField(averagingM().UsNext());
+            */
+            if(!treatVoidCellsAsExplicitForce()) {
+                volScalarField alphaPNext(scalar(1.0) - voidFractionM().voidFractionNext());
+                smoothingM().smoothenReferenceField
+                (
+                    averagingM().UsNext(),
+                    alphaPNext
+                );
+            }
+            // smooth voidFraction
+            smoothingM().smoothen(voidFractionM().voidFractionNext());
 
             clockM().stop("setAverages");
         }
@@ -777,6 +822,7 @@ bool cfdemCloud::evolve
             // write DEM data
             if(verbose_) Info << " -giveDEMdata()" << endl;
             clockM().start(23,"giveDEMdata");
+            transferDatas();
             giveDEMdata();
             clockM().stop("giveDEMdata");
 
