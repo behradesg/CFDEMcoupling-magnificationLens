@@ -239,7 +239,7 @@ void constDiffAndTemporalSmoothing::smoothen(volVectorField& fieldSrc) const
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-void constDiffAndTemporalSmoothing::smoothenReferenceField(volVectorField& fieldSrc) const
+void constDiffAndTemporalSmoothing::smoothenReferenceField(volVectorField& fieldSrc, volScalarField& sFieldSrc) const
 {
     // Create scalar smooth field from virgin scalar smooth field template
     volVectorField vSmoothField = vSmoothField_;

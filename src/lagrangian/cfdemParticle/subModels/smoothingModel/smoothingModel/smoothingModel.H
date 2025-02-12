@@ -116,7 +116,7 @@ public:
 
         virtual void smoothen(volVectorField&) const=0;
 
-        virtual void smoothenReferenceField(volVectorField&) const=0;
+        virtual void smoothenReferenceField(volVectorField&, volScalarField&) const=0;
 };
 
 

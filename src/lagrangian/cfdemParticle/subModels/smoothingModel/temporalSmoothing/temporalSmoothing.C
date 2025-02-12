@@ -154,7 +154,7 @@ void Foam::temporalSmoothing::smoothen(volVectorField& fieldSrc) const
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-void Foam::temporalSmoothing::smoothenReferenceField(volVectorField& fieldSrc) const
+void Foam::temporalSmoothing::smoothenReferenceField(volVectorField& fieldSrc, volScalarField& sFieldSrc) const
 {
     FatalError << "Smoothen reference field is not implemented for this smoothing model!" << abort(FatalError);
 }

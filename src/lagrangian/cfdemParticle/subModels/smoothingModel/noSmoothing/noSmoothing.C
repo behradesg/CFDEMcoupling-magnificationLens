@@ -76,7 +76,7 @@ void noSmoothing::smoothen(volScalarField& field) const
 void noSmoothing::smoothen(volVectorField& field) const
 {}
 
-void noSmoothing::smoothenReferenceField(volVectorField& field) const
+void noSmoothing::smoothenReferenceField(volVectorField& field, volScalarField& sfield) const
 {}
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
