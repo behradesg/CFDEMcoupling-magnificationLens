@@ -22,6 +22,7 @@ liggghtsCommandModels = subModels/liggghtsCommandModel
 smoothingModels = subModels/smoothingModel
 probeModels = subModels/probeModel
 otherForceModels = subModels/otherForceModel
+transferDataModels = subModels/transferDataModel
 
 $(cfdemCloud)/cfdemCloud.C
 $(cfdemCloud)/cfdemCloudIO.C
@@ -111,6 +112,7 @@ $(forceModels)/terminalVelocity/terminalVelocity.C
 $(forceModels)/turbulentVelocityFluctuations/turbulentVelocityFluctuations.C
 $(forceModels)/staticPressure/staticPressure.C
 $(forceModels)/TangDrag/TangDrag.C
+$(forceModels)/particleVelocityController/particleVelocityController.C
 
 $(forceModelsMS)/forceModelMS/forceModelMS.C
 $(forceModelsMS)/forceModelMS/newForceModelMS.C
@@ -121,6 +123,12 @@ $(forceSubModels)/forceSubModel/forceSubModel.C
 $(forceSubModels)/ImEx/ImEx.C
 $(forceSubModels)/ScaleForce/ScaleForce.C
 $(forceSubModels)/scaleForceBoundary/scaleForceBoundary.C
+$(forceSubModels)/DeactivateFluidForces/DeactivateFluidForces.C
+
+$(transferDataModels)/transferDataModel/transferDataModel.C
+$(transferDataModels)/transferDataModel/newTransferDataModel.C
+$(transferDataModels)/transferCellData/transferCellData.C
+$(transferDataModels)/transferFaceData/transferFaceData.C
 
 $(otherForceModels)/otherForceModel/otherForceModel.C
 $(otherForceModels)/otherForceModel/newOtherForceModel.C
@@ -206,8 +214,10 @@ $(liggghtsCommandModels)/readLiggghtsData/readLiggghtsData.C
 $(smoothingModels)/smoothingModel/smoothingModel.C
 $(smoothingModels)/smoothingModel/newSmoothingModel.C
 $(smoothingModels)/noSmoothing/noSmoothing.C
-$(smoothingModels)/constDiffSmoothing/constDiffSmoothing.C
 $(smoothingModels)/temporalSmoothing/temporalSmoothing.C
 $(smoothingModels)/constDiffAndTemporalSmoothing/constDiffAndTemporalSmoothing.C
+$(smoothingModels)/laplaceFilterSmoothing/laplaceFilterSmoothing.C
+$(smoothingModels)/constDiffSmoothingF/constDiffSmoothingF.C
+$(smoothingModels)/constDiffSmoothing/constDiffSmoothing.C
 
 LIB = $(CFDEM_LIB_DIR)/lib$(CFDEM_LIB_NAME)
