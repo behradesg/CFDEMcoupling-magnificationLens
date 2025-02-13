@@ -20,7 +20,7 @@ This CFDEMcoupling version is designed to be compatible with magnification lens 
 Behrad Esgandari, Daniel Queteschiner, Stefan Pirker, and Simon Schneiderbauer. "Discrete magnification lens model: A new hybrid multi-scale modelling method for fluid-particle systems." Powder Technology 445 (2024): 120094.
 
 ## Installation
-The OpenFOAM 6 and LIGGGHTS compatible with CFDEMcoupling-magnificationLens should already be compiled in your system. Then, download the solver or clone it using git clone. Change the cloned folder name to CFDEMcoupling and place the folder in a folder named CFDEM. Load CFDEMcoupling bashrc in a terminal using,
+The OpenFOAM 6 and LIGGGHTS [(LIGGGHTS-magnificationLens)](https://github.com/behradesg/LIGGGHTS-magnificationLens) compatible with CFDEMcoupling-magnificationLens should already be compiled in your system. Then, download the solver or clone it using git clone. Change the cloned folder name to CFDEMcoupling and place the folder in a folder named CFDEM. Load CFDEMcoupling bashrc in a terminal using,
 ```bash
 cd CFDEM/CFDEMcoupling
 source etc/bashrc
