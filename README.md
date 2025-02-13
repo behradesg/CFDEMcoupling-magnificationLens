@@ -16,6 +16,32 @@ endorsed by DCS Computing GmbH, the official producer of the LIGGGHTS® and CFDE
 ## Features
 This CFDEMcoupling version is designed to be compatible with magnification lens solver [(pfmFOAM-magnificationLens)](https://github.com/behradesg/pfmFOAM-magnificationLens). It includes a new force model for paticle velocity controller and new subforce model for deactivating fluid forces in defined cellsets. In addition, Laplace filter and a new diffusion smoothing models are available. Also, new data transfer models can be found. 
 
+## How to cite
+Behrad Esgandari, Daniel Queteschiner, Stefan Pirker, and Simon Schneiderbauer. "Discrete magnification lens model: A new hybrid multi-scale modelling method for fluid-particle systems." Powder Technology 445 (2024): 120094.
+
+## Installation
+The OpenFOAM 6 and LIGGGHTS compatible with CFDEMcoupling-magnificationLens should already be compiled in your system. Then, download the solver or clone it using git clone. Change the cloned folder name to CFDEMcoupling and place the folder in a folder named CFDEM. Load CFDEMcoupling bashrc in a terminal using,
+```bash
+cd CFDEM/CFDEMcoupling
+source etc/bashrc
+./Allwmake
+```
+Compile LIGGGHTS as a library,
+```bash
+cfdemComLIGlib
+```
+compile source files with,
+```bash
+cfdemCompCFDEMsrc 
+```
+compile solvers,
+```bash
+cfdemCompCFDEMsol
+```
+
+## Tutorial
+The tutorials related to the CFD-DEM cases in Esgandari et al. (2024) can be found in CFDEMcoupling/tutorials/cfdemSolverPimple/DiscreteMagnificationLensPaperCases.
+
 ## License
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
