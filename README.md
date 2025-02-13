@@ -1,4 +1,4 @@
-# CFDEMcoupling
+# CFDEMcoupling-magnificationLens 
 
 CFDEM®coupling stands for Computational Fluid Dynamics (CFD) - Discrete Element Method (DEM) coupling. It combines the open source packages OpenFOAM® (CFD) and LIGGGHTS® (DEM) to simulate particle-laden flows. CFDEM®coupling is part of the [CFDEM®project](https://www.cfdem.com).
 
@@ -14,10 +14,7 @@ endorsed by DCS Computing GmbH, the official producer of the LIGGGHTS® and CFDE
 > This offering is not approved or endorsed by OpenCFD Limited, producer and distributor of the OpenFOAM software via www.openfoam.com, and owner of the OPENFOAM®  and OpenCFD®  trade marks.
 
 ## Features
-
-- Documentation and tutorials to get started
-- A modular approach that allows for easy implementation of new models
-- MPI parallelization for large scale problems
+This CFDEMcoupling version is designed to be compatible with magnification lens solver [(pfmFOAM-magnificationLens)](https://github.com/behradesg/pfmFOAM-magnificationLens). It includes a new force model for paticle velocity controller and new subforce model for deactivating fluid forces in defined cellsets. In addition, Laplace filter and a new diffusion smoothing models are available. Also, new data transfer models can be found. 
 
 ## License
 
